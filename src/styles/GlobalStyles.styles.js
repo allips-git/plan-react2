@@ -35,6 +35,8 @@ const GlobalStyles = createGlobalStyle`
     --blue6: #C2D7FF;
     --blue7: #ABC9FB;
     --blue8: #78BBFF;
+    
+    --navy1: #292D77;
 
     --red1: #DC0000;
     --red2: #FF453A;
@@ -83,6 +85,7 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    list-style: none;
   }
 
   body {

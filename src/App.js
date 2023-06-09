@@ -1,12 +1,13 @@
 import React from "react";
-import GlobalStyles from "./styles/GlobalStyles.styles";
+import {Route, Routes} from "react-router-dom";
+
+import Main from "./views/main";
 
 function App() {
   return (
-    <>
-        <GlobalStyles />
-        <div>테스트</div>
-    </>
+    <Routes>
+        <Route path="/" element={<Main/>} />
+    </Routes>
   );
 }
 
