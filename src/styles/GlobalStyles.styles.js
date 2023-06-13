@@ -86,11 +86,13 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     list-style: none;
+    text-decoration: none;
   }
 
   body {
     font-family: "Noto Sans KR", "Roboto", sans-serif;
     line-height: 1.5;
+    font-smooth: always;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: auto;
   }

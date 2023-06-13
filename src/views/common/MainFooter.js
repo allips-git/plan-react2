@@ -19,6 +19,7 @@ const FooterOuter = styled.ul`
   bottom: 0;
   left: 0;
   width: 100%;
+  box-shadow: 0px -4px 4px rgba(0, 0, 0, .06);
 `
 
 const FooterList = styled.li`
@@ -31,6 +32,7 @@ const FooterIcon = styled(HomeIcon)`
   margin: 0 auto;
   height: 22px;
   fill: #D8D8DC;
+  
 `
 
 const FooterTxt = styled.p`
@@ -51,6 +53,7 @@ function MainFooter(){
                 </FooterList>
                 <FooterList>
                     <Calender fill="#D8D8DC" style={{display: "block", margin: "0 auto", height: "22px"}} />
+
                     <FooterTxt>캘린더</FooterTxt>
                 </FooterList>
                 <FooterList>

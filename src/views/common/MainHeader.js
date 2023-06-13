@@ -9,7 +9,7 @@ const HeaderOuter = styled.div`
   padding: 13px 18px;
   background-color: var(--bg3);
   color: var(--text1);
-  position: sticky;
+  position: fixed;
   top: 0;
   display: flex;
   align-items: center;
