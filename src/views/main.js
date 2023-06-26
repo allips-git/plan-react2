@@ -59,7 +59,7 @@ function Main() {
             <MainBox>
                 <MainBanner src={Banner} title="배너" alt="배너" />
                 <MainMenu>
-                    <ImageCard link="/" src={Monitor} title="고객관리" content="전체고객<span>247명</span>"></ImageCard>
+                    <ImageCard link="/customer" src={Monitor} title="고객관리" content="전체고객<span>247명</span>"></ImageCard>
                     <ImageCard src={Ruler} title="견적등록" content="모든 업무가 원클릭"></ImageCard>
                     <ImageCard src={Factory} title="견적등록" content="시스템 공장 <span>5개</span> 사용중"></ImageCard>
                     <ImageCard src={Talk} title="견적등록" content="알림 <span>1종</span>을 사용중입니다."></ImageCard>

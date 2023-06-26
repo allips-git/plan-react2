@@ -73,6 +73,7 @@ const GlobalStyles = createGlobalStyle`
     --font10: .625rem;
     --font11: .688rem;
     --font12: .75rem;
+    --font13: .812rem;
     --font14: .875rem;
     --font16: 1rem;
     --font18: 1.125rem;
@@ -87,6 +88,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     list-style: none;
     text-decoration: none;
+    font-family: "Noto Sans KR", "Roboto", sans-serif;
   }
 
   body {

@@ -3,6 +3,11 @@ import styled from "styled-components";
 
 import Header from "../../common/Header";
 import IconCard from "../../components/IconCard";
+import CustomerDetail from "./CustomerDetail";
+import FixedButton from "../../components/FixedButton";
+
+import Select from "react-select";
+import {NavLink, Route, Routes} from "react-router-dom";
 
 const Container = styled.div`
   background-color: var(--bg3);
@@ -18,21 +23,37 @@ const Container = styled.div`
 
 function CustomerList(){
     const customers = [
-        {id : 1, type: 'a'},
-        {id : 2, type: 'b'},
-        {id : 3, type: 'c'},
-        {id : 4, type: 'd'},
-        {id : 5, type: 'e'}
+        {id : 1, type: 'processOne', name: '김가은', address: '서울 수영구 수영로 472 서울 수영구 수영로 472', date: '22.04.22', pay: '1,240,000원'},
+        {id : 2, type: 'processTwo', name: '김가은', address: '서울 수영구 수영로 472', date: '22.04.22', pay: '1,240,000원'},
+        {id : 3, type: 'processThree', name: '김가은', address: '서울 수영구 수영로 472', date: '22.04.22', pay: '1,240,000원'},
+        {id : 4, type: 'processFour', name: '김가은', address: '서울 수영구 수영로 472', date: '22.04.22', pay: '1,240,000원'},
+        {id : 5, type: 'processFive', name: '김가은', address: '서울 수영구 수영로 472', date: '22.04.22', pay: '1,240,000원'},
+        {id : 6, type: 'processSix', name: '김가은', address: '서울 수영구 수영로 472', date: '22.04.22', pay: '1,240,000원'}
+    //     type명 변경해서 사용해주세요. 임의로 넣어두었습니다! components/IconCard 내의 useEffect type명도 함께 변경 필요
+    ]
+
+    const options = [
+        { value: 'test1', label: '테스트1' }
     ]
 
     return(
         <>
             <Header title="고객" />
             <Container>
+                <Select options={options} classNamePrefix="" />
+                {/* 추후 style 수정 예정, react-select library 사용 */}
+
                 {customers.map(customer => (
-                    <IconCard key={customer.id} type={customer.type} />
+                    <NavLink to="/customer/detail">
+                        <IconCard link="/customers/detail" key={customer.id} type={customer.type} name={customer.name} address={customer.address} date={customer.date} pay={customer.pay} />
+                    </NavLink>
                 ))}
             </Container>
+            <FixedButton content="신규 명세표" />
+
+            <Routes>
+                <Route path="/customer/detail" element={<CustomerDetail />} />
+            </Routes>
         </>
     )
 }
