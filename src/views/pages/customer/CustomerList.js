@@ -10,7 +10,6 @@ import Select from "react-select";
 import {NavLink, Route, Routes} from "react-router-dom";
 
 const Container = styled.div`
-  background-color: var(--bg3);
   width: 100%;
   min-height: calc(100vh - 52px);
   margin: 52px auto 0 auto;
@@ -45,7 +44,7 @@ function CustomerList(){
 
                 {customers.map(customer => (
                     <NavLink to="/customer/detail">
-                        <IconCard link="/customers/detail" key={customer.id} type={customer.type} name={customer.name} address={customer.address} date={customer.date} pay={customer.pay} />
+                        <IconCard key={customer.id} type={customer.type} name={customer.name} address={customer.address} date={customer.date} pay={customer.pay} />
                     </NavLink>
                 ))}
             </Container>

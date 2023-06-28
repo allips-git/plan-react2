@@ -5,7 +5,14 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 // import {Provider} from "react-redux";
 import GlobalStyles from "./styles/GlobalStyles.styles";
+import styled from "styled-components";
 // import store from "./Store";
+
+const Container = styled.div`
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg3);
+`
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,7 +20,9 @@ root.render(
     {/*<Provider>*/}
         <BrowserRouter>
             <GlobalStyles />
-            <App />
+            <Container>
+                <App />
+            </Container>
         </BrowserRouter>
     {/*</Provider>*/}
   </React.StrictMode>
