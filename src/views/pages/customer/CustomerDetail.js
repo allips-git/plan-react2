@@ -1,7 +1,8 @@
 import React from "react";
+import styled from "styled-components";
+
 import Header from "../../common/Header";
 import RoundTag from "../../components/RoundTag";
-import styled from "styled-components";
 
 const Container = styled.div`
   background-color: var(--bg3);

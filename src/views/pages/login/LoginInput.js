@@ -1,7 +1,8 @@
 import React from "react";
+import styled from "styled-components";
+
 import Header from "../../common/Header";
 import InputLabel from "../../components/InputLabel";
-import styled from "styled-components";
 import InputRadio from "../../components/InputRadio";
 
 const LoginWrapper = styled.div`

@@ -5,14 +5,13 @@ import MainHeader from "./common/MainHeader";
 import MainFooter from "./common/MainFooter";
 import ImageCard from "./components/ImageCard";
 import CountList from "./components/CountList";
+import ListMain from "./components/ListMain";
 
 import Banner from "../assets/images/img-banner.png";
-
 import Monitor from "../assets/images/img-monitor.png";
 import Ruler from "../assets/images/img-ruler.png";
 import Factory from "../assets/images/img-factory.png";
 import Talk from "../assets/images/img-talk.png";
-import ListMain from "./components/ListMain";
 
 const MainBox = styled.div`
   background-color: var(--bg2);
