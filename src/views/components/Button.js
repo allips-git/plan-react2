@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 const ButtonWrapper = styled.button`
   padding: 6px 8px;
@@ -11,12 +11,24 @@ const ButtonWrapper = styled.button`
   color: var(--text5);
   border: none;
   min-width: 80px;
+
+  ${props =>
+          props.fullGray &&
+          css`
+            width: 100%;
+            background-color: var(--button1);
+            color: var(--text1);
+            padding: 10px 36px;
+            font-size: var(--font14);
+            font-weight: 700;
+          `
+  }
 `
 
-function Button({content}){
-    return(
+function Button({content, type, ...rest}) {
+    return (
         <>
-            <ButtonWrapper>{content}</ButtonWrapper>
+            <ButtonWrapper type={type} {...rest}>{content}</ButtonWrapper>
         </>
     )
 }

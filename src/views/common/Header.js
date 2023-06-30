@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import BtnPrev from "../../assets/images/btn-prev.svg";
+import {useNavigate} from "react-router-dom";
 
 const HeaderWrapper = styled.div`
   width: 100%;
@@ -27,10 +28,15 @@ const HeaderTitle = styled.h2`
 `
 
 function Header({title}){
+    const navigate = useNavigate();
+    const onClickBtn = () => {
+        navigate(-1);
+    }
+
     return(
         <>
             <HeaderWrapper>
-                <PrevButton src={BtnPrev} alt="이전" title="이전" />
+                <PrevButton onClick={() => onClickBtn()} src={BtnPrev} alt="이전" title="이전" />
                 <HeaderTitle>{title}</HeaderTitle>
             </HeaderWrapper>
         </>

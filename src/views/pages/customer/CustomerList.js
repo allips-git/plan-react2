@@ -3,11 +3,10 @@ import styled from "styled-components";
 
 import Header from "../../common/Header";
 import IconCard from "../../components/IconCard";
-import CustomerDetail from "./CustomerDetail";
 import FixedButton from "../../components/FixedButton";
 
 import Select from "react-select";
-import {NavLink, Route, Routes} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -49,10 +48,6 @@ function CustomerList(){
                 ))}
             </Container>
             <FixedButton content="신규 명세표" />
-
-            <Routes>
-                <Route path="/customer/detail" element={<CustomerDetail />} />
-            </Routes>
         </>
     )
 }
