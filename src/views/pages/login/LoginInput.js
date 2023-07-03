@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 
 import Header from "../../common/Header";
@@ -79,20 +79,57 @@ const LoginJoin = styled.div`
 `
 
 function LoginInput() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value);
+    };
+
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value);
+    };
+
     return (
         <>
             <Header title="로그인"/>
             <LoginWrapper>
-                <InputLabel name="email" label="이메일" type="text" placeholder="이메일을 입력해주세요."/>
-                <InputLabel name="password" label="비밀번호" type="password" placeholder="비밀번호를 입력해주세요."/>
+                <InputLabel
+                    name="email"
+                    label="이메일"
+                    type="text"
+                    placeholder="이메일을 입력해주세요."
+                    value={email}
+                    onChange={handleEmailChange}
+                />
+
+                <InputLabel
+                    name="password"
+                    label="비밀번호"
+                    type="password"
+                    placeholder="비밀번호를 입력해주세요."
+                    value={password}
+                    onChange={handlePasswordChange}
+                />
+
                 <LoginLink>
-                    <InputRadio name="autologin" label="자동 로그인"/>
+                    <InputRadio
+                        name="autologin"
+                        label="자동 로그인"
+                    />
+
                     <LoginSearch>
                         <NavLink>아이디 찾기</NavLink>
                         <NavLink>비밀번호 찾기</NavLink>
                     </LoginSearch>
                 </LoginLink>
-                <Button type="submit" content="이메일 로그인" fullGray/>
+
+                <Button
+                    type="submit"
+                    content="이메일 로그인"
+                    fullGray
+                />
+
                 <LoginJoin>
                     계정이 없으신가요?
                     <NavLink to="/login/agree">회원가입</NavLink>

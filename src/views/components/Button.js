@@ -23,7 +23,7 @@ const ButtonWrapper = styled.button`
             font-weight: 700;
           `
   }
-  
+
   ${props =>
           props.fullBlue &&
           css`

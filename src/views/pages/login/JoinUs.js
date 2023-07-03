@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 
 import Header from "../../common/Header";
-import InputLabel from "../../components/InputLabel";
+import InputValid from "../../components/InputValid";
 import Button from "../../components/Button";
 
 const Container = styled.div`
@@ -14,8 +14,8 @@ const Container = styled.div`
   div:not(:first-child) {
     margin-top: 24px;
   }
-  
-  button{
+
+  button {
     margin-top: 24px;
   }
 `;
@@ -82,10 +82,10 @@ function JoinUs() {
 
     return (
         <>
-            <Header title="회원가입 1/3" />
+            <Header title="회원가입 1/3"/>
             <Container>
                 <form onSubmit={handleSubmit}>
-                    <InputLabel
+                    <InputValid
                         label="이메일"
                         name="email"
                         type="text"
@@ -94,7 +94,7 @@ function JoinUs() {
                         error={emailError}
                         onChange={handleEmailChange}
                     />
-                    <InputLabel
+                    <InputValid
                         label="비밀번호"
                         name="pw"
                         type="password"
@@ -103,7 +103,7 @@ function JoinUs() {
                         error={pwError}
                         onChange={handlePwChange}
                     />
-                    <InputLabel
+                    <InputValid
                         label="비밀번호 확인"
                         name="confirmPw"
                         type="password"

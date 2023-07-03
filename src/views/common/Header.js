@@ -13,6 +13,7 @@ const HeaderWrapper = styled.div`
   display: flex;
   padding: 16px 20px;
   align-items: center;
+  z-index: 1;
 `
 
 const PrevButton = styled.img`

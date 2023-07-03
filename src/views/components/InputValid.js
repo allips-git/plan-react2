@@ -1,5 +1,5 @@
 import React from "react";
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 
 const InputWrapper = styled.div`
   position: relative;
@@ -19,21 +19,17 @@ const LabelTxt = styled.label`
   left: 6px;
 `;
 
-const LabelVital = styled.span`
-  color: var(--red2);
-  display: none;
-
-  ${props =>
-          props.vital &&
-          css`
-            display: inline;
-          `
-  }
-`
-
 const InputBox = styled.input`
   border-radius: 2px;
-  border: 1px solid var(--line4);
+  border: 1px solid ${props => {
+    if (props.error) {
+        return "var(--red2)";
+    } else if (props.value === "") {
+        return "var(--line4)";
+    } else {
+        return "var(--blue4)";
+    }
+}};
   background-color: var(--bg3);
   padding: 10px 14px;
   width: 100%;
@@ -45,23 +41,29 @@ const InputBox = styled.input`
   }
 `;
 
-function InputLabel({name, label, type, placeholder, value, onChange, vital}) {
+const ErrorText = styled.p`
+  color: var(--red2);
+  font-size: var(--font10);
+  margin-top: 10px;
+  font-weight: 400;
+`;
+
+function InputValid({ name, label, type, placeholder, value, error, onChange }) {
     return (
         <InputWrapper>
-            <LabelTxt htmlFor={name}>
-                {label}
-                <LabelVital vital={vital}> *</LabelVital>
-            </LabelTxt>
+            <LabelTxt htmlFor={name}>{label}</LabelTxt>
             <InputBox
                 id={name}
                 name={name}
                 type={type}
                 placeholder={placeholder}
                 value={value}
+                error={error}
                 onChange={onChange}
             />
+            {error && <ErrorText>{error}</ErrorText>}
         </InputWrapper>
     );
 }
 
-export default InputLabel;
+export default InputValid;
