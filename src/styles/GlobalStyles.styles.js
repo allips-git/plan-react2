@@ -86,6 +86,7 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    outline: none;
     list-style: none;
     text-decoration: none;
     font-family: "Noto Sans KR", "Roboto", sans-serif;

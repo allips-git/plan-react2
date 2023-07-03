@@ -23,6 +23,18 @@ const ButtonWrapper = styled.button`
             font-weight: 700;
           `
   }
+  
+  ${props =>
+          props.fullBlue &&
+          css`
+            width: 100%;
+            background-color: var(--blue4);
+            color: var(--text5);
+            padding: 10px 36px;
+            font-size: var(--font14);
+            font-weight: 700;
+          `
+  }
 `
 
 function Button({content, type, ...rest}) {
