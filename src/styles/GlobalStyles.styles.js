@@ -35,7 +35,7 @@ const GlobalStyles = createGlobalStyle`
     --blue6: #C2D7FF;
     --blue7: #ABC9FB;
     --blue8: #78BBFF;
-    
+
     --navy1: #292D77;
 
     --red1: #DC0000;

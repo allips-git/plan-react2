@@ -2,8 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const CheckWrapper = styled.label`
-  padding: 12px 8px;
-  background-color: var(--bg3);
+  display: block;
   
   input:checked + span{
     background-color: var(--blue4);
@@ -20,6 +19,10 @@ const CheckTxt = styled.span`
   font-weight: 700;
   color: var(--text0);
   display: block;
+  border-radius: 20px;
+  border: 1px solid var(--line3);
+  background-color: var(--bg3);
+  padding: 10px 8px;
 `
 
 function InputCheck({label, name}){
