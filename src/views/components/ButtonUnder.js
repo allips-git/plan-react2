@@ -23,11 +23,11 @@ const ButtonContent = styled.button`
   border-radius: 2px;
 `
 
-function ButtonUnder({content}){
+function ButtonUnder({content, onClick}){
     return(
         <>
             <ButtonWrapper>
-                <ButtonContent>{content}</ButtonContent>
+                <ButtonContent onClick={onClick}>{content}</ButtonContent>
             </ButtonWrapper>
         </>
     )

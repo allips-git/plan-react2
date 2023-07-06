@@ -68,7 +68,7 @@ const InputWrapper = styled.input`
 function InputRadio({label, name, next, ...rest}) {
     return (
         <>
-            <InputBox for={name}>
+            <InputBox htmlFor={name}>
                 <InputWrapper type="checkbox" id={name} name={name}/>
                 <span></span>
                 <InputTxt {...rest}>{label}</InputTxt>
