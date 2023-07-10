@@ -19,6 +19,9 @@ const Container = styled.div`
   }
 `
 
+const InputWrapper = styled.div`
+  width: 100%;
+`
 
 const AuthTitle = styled.h3`
   font-size: var(--font14);
@@ -64,10 +67,12 @@ function JoinAuth() {
                     name="uploadProfile"
                 />
 
-                <InputRadio
-                    label="사업자 등록번호 없음"
-                    name=""
-                />
+                <InputWrapper>
+                    <InputRadio
+                        label="사업자 등록번호 없음"
+                        name=""
+                    />
+                </InputWrapper>
 
                 <InputButton
                     label="사업자 등록번호 조회"
@@ -121,6 +126,7 @@ function JoinAuth() {
                     type="text"
                     value={taxEmailValue}
                     onChange={handleTaxEmailChange}
+                    placeholder="example@email.com"
                     vital
                 />
             </Container>
