@@ -84,7 +84,7 @@ function JoinSetting(){
         <>
             <Header title="매장 설정 2/3" />
             <Container>
-                <ImageThumbnail name="uploadProfile" />
+                <ImageThumbnail title="프로필 설정" name="uploadProfile" />
 
                 <InputLabel
                     label="매장 이름"

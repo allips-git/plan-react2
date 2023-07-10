@@ -6,7 +6,7 @@ const InputWrapper = styled.div`
   width: 100%;
   height: fit-content;
   margin: 0 auto;
-`;
+`
 
 const LabelTxt = styled.label`
   color: var(--text3);
@@ -24,11 +24,11 @@ const LabelVital = styled.span`
   display: none;
 
   ${props =>
-          props.vital &&
-          css`
+    props.vital &&
+    css`
             display: inline;
           `
-  }
+}
 `
 
 const InputBox = styled.input`
@@ -36,7 +36,7 @@ const InputBox = styled.input`
   border: 1px solid var(--line4);
   background-color: var(--bg3);
   padding: 10px 14px;
-  width: 100%;
+  width: calc(100% - 80px);
   height: 40px;
   color: var(--text1);
 
@@ -45,14 +45,35 @@ const InputBox = styled.input`
   }
 
   ${props =>
-          props.disabled &&
-          css`
+    props.disabled &&
+    css`
             background-color: var(--bg2);
           `
-  }
+}
 `;
 
-function InputLabel({name, label, type, placeholder, value, onChange, vital, disabled}) {
+const ButtonWrapper = styled.button`
+  width: 74px;
+  height: 40px;
+  padding: 10px;
+  background-color: var(--blue4);
+  border-radius: 2px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  color: var(--text5);
+  font-size: var(--font14);
+  font-weight: 500;
+`
+
+function InputButton({name, label, type, placeholder, value, onChange, vital, disabled, button}) {
+    // name = id, name, for
+    // label = 화면에 표시되는 input box 이름
+    // type = input type / placeholder = placeholder
+    // value = 값, onChange = 값 변경 핸들러
+    // vital = 중요 표시 * / disabled = 입력 불가
+
     return (
         <InputWrapper>
             <LabelTxt htmlFor={name}>
@@ -68,8 +89,9 @@ function InputLabel({name, label, type, placeholder, value, onChange, vital, dis
                 onChange={onChange}
                 disabled={disabled}
             />
+            <ButtonWrapper>{button}</ButtonWrapper>
         </InputWrapper>
-    );
+    )
 }
 
-export default InputLabel;
+export default InputButton;

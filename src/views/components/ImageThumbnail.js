@@ -67,7 +67,7 @@ const ThumbnailLabel = styled.label`
   text-align: center;
 `
 
-function ImageThumbnail({ name }){
+function ImageThumbnail({ name, title }){
     const [uploadImage, setUploadImage] = useState(null);
 
     const handleImageUpload = (event) => {
@@ -82,7 +82,7 @@ function ImageThumbnail({ name }){
     return(
         <>
             <FileWrapper>
-                <FileLabel>프로필 사진</FileLabel>
+                <FileLabel>{title}</FileLabel>
                 {uploadImage ? (
                     <ThumbnailWrapper>
                         <ThumbnailImage src={uploadImage} alt="프로필 이미지" />
