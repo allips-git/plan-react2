@@ -76,14 +76,14 @@ function JoinAgree() {
                 <InputRadio bold={'true'} label="모두 동의합니다." name="agreeAll" onClick={(e)=>{
                     let stat = $('#agreeAll').prop('checked');
 
-                    // if(!stat)
-                    // {
-                    //     $('input[type="checkbox"]').prop('checked', true);
-                    // }
-                    // else
-                    // {
-                    //     $('input[type="checkbox"]').prop('checked', false);
-                    // }
+                    if(!stat)
+                    {
+                        $('input[type="checkbox"]').prop('checked', true);
+                    }
+                    else
+                    {
+                        $('input[type="checkbox"]').prop('checked', false);
+                    }
                 }}/>
                 <InputRadio font11={'true'} label="[필수] 만 14세 이상입니다." name="agreeChk2" />
                 <InputRadio font11={'true'} label="[필수] 이용약관 동의" name="agreeChk3" next="true" />

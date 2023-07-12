@@ -13,10 +13,10 @@ import JoinAuth from "./views/pages/login/JoinAuth";
 function App() {
   return (
     <Routes>
-        <Route path="/" element={<Main />} />
+        <Route path="/main" element={<Main />} />
         <Route path="/customer" element={<CustomerList />} />
 
-        <Route path="/login" element={<LoginInput />} />
+        <Route path="/" element={<LoginInput />} />
         <Route path="/loginWait" element={<LoginWait />} />
         <Route path="/login/agree" element={<JoinAgree />} />
         <Route path="/login/joinus" element={<JoinUs />} />

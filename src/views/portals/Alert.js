@@ -44,18 +44,20 @@ const AlertSpan = styled.p`
   text-align: center;
 `
 
-function Alert({ title, content, buttonContent }){
-    return(
-        <>
-            <AlertWrapper>
-                <AlertModal>
-                    <AlertTitle>{title}</AlertTitle>
-                    <AlertContent>{content}</AlertContent>
-                    <Button type="button" content={buttonContent} />
-                </AlertModal>
-            </AlertWrapper>
-        </>
-    )
+function Alert(title, content, buttonContent){
+  const showAlert = () => (
+    <>
+        <AlertWrapper>
+            <AlertModal>
+                <AlertTitle>{title}</AlertTitle>
+                <AlertContent>{content}</AlertContent>
+                <Button type="button" content={buttonContent} />
+            </AlertModal>
+        </AlertWrapper>
+    </>
+  )
+
+  return showAlert;
 }
 
 export default Alert;

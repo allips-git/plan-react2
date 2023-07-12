@@ -1,5 +1,10 @@
+import $ from 'jquery';
+
 import React, {useState} from "react";
 import styled from "styled-components";
+
+import { fncAjax, fncAjaxFail, url } from "../../../dev/function.js";
+import Alert from "../../portals/Alert.js";
 
 import Header from "../../common/Header";
 import InputLabel from "../../components/InputLabel";
@@ -90,6 +95,27 @@ function LoginInput() {
         setPassword(event.target.value);
     };
 
+    const login = () => {
+        let param = { 
+            id : $('#email').val(), 
+            pw : $('#password').val(), 
+            chk : $('input:checkbox[id="autologin"]').is(":checked") == true ? 'Y' : 'N' 
+        };
+
+        fncAjax(`${url}/login`, "POST", param, false).done(function (res) {
+            if(res.result['result'])
+            {
+                localStorage.removeItem('storage');
+                localStorage.setItem('storage', JSON.stringify(res.result['data']));
+
+            }
+            else
+            {
+                alert(res.result['msg']);
+            }
+        }).fail(fncAjaxFail);
+    }
+
     return (
         <>
             <Header title="로그인"/>
@@ -125,9 +151,10 @@ function LoginInput() {
                 </LoginLink>
 
                 <Button
-                    type="submit"
+                    type="button"
                     content="이메일 로그인"
                     fullGray
+                    onClick={login}
                 />
 
                 <LoginJoin>
