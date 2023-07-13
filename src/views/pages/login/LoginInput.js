@@ -107,7 +107,6 @@ function LoginInput() {
             {
                 localStorage.removeItem('storage');
                 localStorage.setItem('storage', JSON.stringify(res.result['data']));
-
             }
             else
             {

@@ -1,6 +1,10 @@
 import $ from 'jquery';
 
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
+import { fncAjax, fncAjaxFail, url } from "../../../dev/function.js";
+
 import Header from "../../common/Header";
 import styled from "styled-components";
 import InputRadio from "../../components/InputRadio";
@@ -47,8 +51,10 @@ const JoinTitle = styled.h2`
 `
 
 function JoinAgree() {
+    const joinNavigate = useNavigate();
+
     const agreeChk = () => {
-        
+        danal();
     }
 
     const danal = () => {
@@ -59,8 +65,50 @@ function JoinAgree() {
         IMP.certification({
             merchant_uid : 'merchant'
         }, function(rsp) {
-            console.log(rsp);
+            if(rsp.success)
+            {
+                /** 인증 성공 */
+                fncAjax(`${url}/api/danal/getDanalToken`, "POST", {}).done(function (data) {
+                    let result = JSON.parse(data.result);
+                    let token  = result.response.access_token;
+        
+                    getDanal(rsp.imp_uid, token);
+                }).fail(fncAjaxFail);
+            }
+            else
+            {
+                alert(rsp.error_msg);
+            }
         });
+    }
+
+    const getDanal = (uid, token) => {
+        let param = {
+            imp_uid : uid,
+            token   : token
+        };
+    
+        fncAjax(`${url}/api/danal/getDanalCheckInfo`, 'POST', param).done(function (data){
+            let result = JSON.parse(data.result);
+    
+            if(result.response.certified)
+            {
+                /** 본인인증 성공 */
+                // console.log("본인인증 성공!");
+                joinNavigate('/login/joinus', {
+                    state : {
+                        birthday : result.response.birthday,
+                        name     : result.response.name,
+                        phone    : result.response.phone
+                    }
+                })
+            }
+            else
+            {
+                /** 본인인증 실패 */
+                console.log("본인인증 실패!");
+            }
+        }).fail(fncAjaxFail);
     }
 
     return (
@@ -74,15 +122,13 @@ function JoinAgree() {
                 </JoinTitle>
 
                 <InputRadio bold={'true'} label="모두 동의합니다." name="agreeAll" onClick={(e)=>{
-                    let stat = $('#agreeAll').prop('checked');
-
-                    if(!stat)
+                    if($('#agreeAll').prop("checked"))
                     {
-                        $('input[type="checkbox"]').prop('checked', true);
+                        $('#agreeChk2, #agreeChk3, #agreeChk4').prop('checked', false);
                     }
                     else
                     {
-                        $('input[type="checkbox"]').prop('checked', false);
+                        $('#agreeChk2, #agreeChk3, #agreeChk4').prop('checked', true);
                     }
                 }}/>
                 <InputRadio font11={'true'} label="[필수] 만 14세 이상입니다." name="agreeChk2" />

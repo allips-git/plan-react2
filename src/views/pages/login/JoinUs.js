@@ -1,4 +1,7 @@
-import React, {useState} from "react";
+import $ from 'jquery';
+
+import React, { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 import Header from "../../common/Header";
@@ -21,6 +24,11 @@ const Container = styled.div`
 `;
 
 function JoinUs() {
+    const joinNavigate = useNavigate();
+    const { agreeInfo } = useLocation();
+
+    // console.log(state);
+
     const [email, setEmail] = useState("");
     const [pw, setPw] = useState("");
     const [confirmPw, setConfirmPw] = useState("");
@@ -76,44 +84,71 @@ function JoinUs() {
         }
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-    };
+    const joinChk = () => {
+        if(!validateEmail(email))
+        {
+            setEmailError("이메일 형식이 올바르지 않습니다.");
+            $('#email').focus();
+            return;
+        }
+
+        if(!validatePassword(pw))
+        {
+            setPwError("비밀번호는 8자 이상의 숫자와 영문자 조합이어야 합니다.");
+            $('#pw').focus();
+            return;
+        }
+
+        if(!validateConfirmPassword(pw, $('#confirmPw').val()))
+        {
+            setConfirmPwError("비밀번호가 일치하지 않습니다.");
+            $('#confirmPw').focus();
+            return;
+        }
+
+        joinNavigate('/login/setting', {
+            state : {
+                agreeInfo : agreeInfo,
+                joinInfo  : {
+                    email : email,
+                    pw    : pw
+                }
+            }
+        })
+    }
 
     return (
         <>
             <Header title="회원가입 1/3"/>
             <Container>
-                <form onSubmit={handleSubmit}>
-                    <InputValid
-                        label="이메일"
-                        name="email"
-                        type="text"
-                        placeholder="이메일을 입력해주세요."
-                        value={email}
-                        error={emailError}
-                        onChange={handleEmailChange}
-                    />
-                    <InputValid
-                        label="비밀번호"
-                        name="pw"
-                        type="password"
-                        placeholder="비밀번호를 입력해주세요."
-                        value={pw}
-                        error={pwError}
-                        onChange={handlePwChange}
-                    />
-                    <InputValid
-                        label="비밀번호 확인"
-                        name="confirmPw"
-                        type="password"
-                        placeholder="비밀번호를 한 번 더 입력해주세요."
-                        value={confirmPw}
-                        error={confirmPwError}
-                        onChange={handleConfirmPwChange}
-                    />
-                    <Button type="submit" content="회원가입" fullBlue/>
-                </form>
+                <InputValid
+                    label="이메일"
+                    name="email"
+                    type="text"
+                    placeholder="이메일을 입력해주세요."
+                    value={email}
+                    error={emailError}
+                    onChange={handleEmailChange}
+                />
+                <InputValid
+                    label="비밀번호"
+                    name="pw"
+                    type="password"
+                    placeholder="비밀번호를 입력해주세요."
+                    value={pw}
+                    error={pwError}
+                    onChange={handlePwChange}
+                />
+                <InputValid
+                    label="비밀번호 확인"
+                    name="confirmPw"
+                    type="password"
+                    placeholder="비밀번호를 한 번 더 입력해주세요."
+                    value={confirmPw}
+                    error={confirmPwError}
+                    onChange={handleConfirmPwChange}
+                />
+                <Button type="button" content="회원가입" fullBlue onClick={joinChk}/>
             </Container>
         </>
     );

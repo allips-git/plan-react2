@@ -3,7 +3,7 @@ import $ from "jquery";
 let url;
 let domain = window.location.hostname;
 
-if(domain == 'plan-react.localhost' || domain == 'localhost')
+if(domain === 'plan-react.localhost' || domain === 'localhost')
 {
     url = 'http://plan-center.localhost';
 }
