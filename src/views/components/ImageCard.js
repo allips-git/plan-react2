@@ -3,16 +3,12 @@ import styled from "styled-components";
 
 const CardWrapper = styled.div`
   width: 48.5%;
-  height: fit-content;
-  min-height: 167px;
   display: flex;
   background-color: var(--bg3);
   box-shadow: 0 2px 2px rgba(0,0,0,.04);
   border-radius: 4px;
-  text-align: center;
   align-items: center;
-  padding: 30px 10px;
-  margin-bottom: 3%;
+  padding: 12px 14px;
   
   &:nth-child(odd){
     margin-right: 1.5%;
@@ -36,17 +32,22 @@ const CardTitle = styled.h3`
   font-weight: 700;
   font-size: var(--font14);
   color: var(--text0);
+  display: flex;
+  
+  p{
+    margin-left: 3px;
+  }
 `
 
 const CardTxt = styled.p`
-  font-weight: 500;
-  font-size: var(--font11);
+  font-weight: 400;
+  font-size: var(--font10);
   color: var(--text4);
-  
-  & > span{
-    font-weight: 700;
-    color: var(--side9);
-  }
+`
+
+const CardCount = styled.h1`
+  font-weight: 700;
+  font-size: var(--font22);
 `
 
 function ImageCard({link, src, title, content}){
@@ -54,9 +55,19 @@ function ImageCard({link, src, title, content}){
         <>
             <CardWrapper>
                 <CardContent href={link}>
-                    <CardImage src={src} alt={title} title={title} />
-                    <CardTitle>{title}</CardTitle>
-                    <CardTxt dangerouslySetInnerHTML={{ __html: content }} />
+                    <CardTitle>
+                        <CardImage
+                            src={src}
+                            alt={title}
+                            title={title}
+                        />
+                        <p>
+                            {title}
+                        </p>
+                    </CardTitle>
+                    <CardTxt>
+                        {content}
+                    </CardTxt>
                 </CardContent>
             </CardWrapper>
         </>

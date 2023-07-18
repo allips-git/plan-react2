@@ -8,25 +8,60 @@ import CountList from "./components/CountList";
 import ListMain from "./components/ListMain";
 
 import Banner from "../assets/images/img-banner.png";
-import Monitor from "../assets/images/img-monitor.png";
-import Ruler from "../assets/images/img-ruler.png";
-import Factory from "../assets/images/img-factory.png";
-import Talk from "../assets/images/img-talk.png";
+import Factory from "../assets/images/img-factory.svg";
+import Truck from "../assets/images/img-truck.svg";
 
 const MainBox = styled.div`
   background-color: var(--bg2);
   width: 100%;
   min-height: calc(100vh - 52px);
-  margin: 52px auto 0 auto;
+  margin: 0 auto;
   padding: 14px 14px 71px 14px;
   
   & > div:not(:first-child){
-    margin-top: 10px;
+    margin-top: 14px;
   }
 `
 
 const MainBanner = styled.img`
   width: 100%;
+  margin-top: 52px;
+`
+
+const MainMenuBox = styled.div`
+  width: 100%;
+  background-color: var(--bg3);
+  padding: 0 14px;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.06);
+`
+
+const MainMenuTitleBox = styled.div`
+  width: 100%;
+  color: var(--text0);
+  line-height: var(--font22);
+  padding-top: 16px;
+  
+  &::after{
+    content: '';
+    display: block;
+    clear: both
+  ;
+  }
+`
+
+const MainMenuTitle = styled.h2`
+  font-size: var(--font16);
+  float: left;
+  display: inline-block;
+  vertical-align: middle;
+`
+
+const MainMenuCount = styled.h1`
+  font-size: var(--font22);
+  float: right;
+  display: inline-block;
+  vertical-align: middle;
 `
 
 const MainMenu = styled.div`
@@ -55,15 +90,19 @@ function Main() {
     return (
         <>
             <MainHeader />
+            <MainBanner src={Banner} title="배너" alt="배너" />
             <MainBox>
-                <MainBanner src={Banner} title="배너" alt="배너" />
+                <MainMenuBox>
+                    <MainMenuTitleBox>
+                        <MainMenuTitle>전체고객</MainMenuTitle>
+                        <MainMenuCount>1명</MainMenuCount>
+                    </MainMenuTitleBox>
+                    <CountList items={MainCounts} />
+                </MainMenuBox>
                 <MainMenu>
-                    <ImageCard link="/customer" src={Monitor} title="고객관리" content="전체고객<span>247명</span>"></ImageCard>
-                    <ImageCard src={Ruler} title="견적등록" content="모든 업무가 원클릭"></ImageCard>
-                    <ImageCard src={Factory} title="견적등록" content="시스템 공장 <span>5개</span> 사용중"></ImageCard>
-                    <ImageCard src={Talk} title="견적등록" content="알림 <span>1종</span>을 사용중입니다."></ImageCard>
+                    <ImageCard link="/customer" src={Factory} title="공장" content="공장 전체"></ImageCard>
+                    <ImageCard src={Truck} title="배송 대기" content="공장 전체"></ImageCard>
                 </MainMenu>
-                <CountList items={MainCounts} />
                 <ListMain title="첫 방문 환영 문자" content="메시지 추가" items={MessageList} />
             </MainBox>
             <MainFooter />

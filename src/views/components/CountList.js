@@ -3,10 +3,8 @@ import {styled, css} from "styled-components";
 
 const ListWrapper = styled.ul`
   width: 100%;
-  background-color: var(--bg3);
   display: flex;
-  padding: 14px 0;
-  border-radius: 4px;
+  padding: 16px 0;
 
   ${props =>
           props.main &&
@@ -26,15 +24,15 @@ const ListItem = styled.li`
 `
 
 const ListCount = styled.h3`
-  color: var(--blue2);
+  color: var(--blue4);
   font-weight: 700;
-  font-size: var(--font18);
+  font-size: var(--font20);
 `
 
 const ListTxt = styled.p`
   color: var(--text2);
   font-weight: 500;
-  font-size: var(--font11);
+  font-size: var(--font12);
 `
 
 function CountList({items, main}) {
