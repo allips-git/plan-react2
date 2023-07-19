@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Button from "./Button";
 
-import NextButton from "../../assets/images/btn-next.svg";
+import {ReactComponent as NextButton} from "../../assets/images/btn-next.svg";
 
 const ListWrapper = styled.div`
   width: 100%;
@@ -34,51 +34,76 @@ const ListItem = styled.li`
   width: 100%;
   position: relative;
   list-style: decimal;
+  display: flex;
+  align-items: center;
   
   & + & {
     margin-top: 24px;
   }
 `
 
+const ListCount = styled.p`
+  font-size: var(--font16);
+  font-weight: 700;
+  color: var(--text2);
+  width: 10%;
+`
+
+const ListContentWrapper = styled.div`
+  width: 90%;
+`
+
 const ListItemTitle = styled.p`
   color: var(--text0);
   font-size: var(--font12);
   font-weight: 700;
+  width: 80%;
 `
 
 const ListItemDescription = styled.p`
   color: var(--text3);
   font-size: var(--font10);
   font-weight: 500;
+  width: 80%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `
 
-const ButtonNext = styled.img`
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-`
-
-function ListMain({items, title, content}){
-    return(
+function ListMain({ items, title, content }) {
+    return (
         <>
             <ListWrapper>
                 <ListTitleWrapper>
                     <ListTitle>{title}</ListTitle>
-                    <Button content={content}/>
+                    <Button content={content} />
                 </ListTitleWrapper>
                 <ListItemWrapper>
                     {items.map((item, index) => (
                         <ListItem key={index}>
-                            <ListItemTitle>{item.txt}</ListItemTitle>
-                            <ListItemDescription>{item.description}</ListItemDescription>
-                            <ButtonNext src={NextButton} alt="다음 버튼" title="다음 버튼" />
+                            <ListCount>{`${index + 1}`}</ListCount>
+                            <ListContentWrapper>
+                                <ListItemTitle>{item.txt}</ListItemTitle>
+                                <ListItemDescription>{item.description}</ListItemDescription>
+                            </ListContentWrapper>
+                            <NextButton
+                                style={{
+                                    position: "absolute",
+                                    top: "50%",
+                                    transform: "translateY(-50%)",
+                                    right: "0",
+                                }}
+                                fill="#EDEDED"
+                                src={NextButton}
+                                alt="다음 버튼"
+                                title="다음 버튼"
+                            />
                         </ListItem>
                     ))}
                 </ListItemWrapper>
             </ListWrapper>
         </>
-    )
+    );
 }
 
 export default ListMain;

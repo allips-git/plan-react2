@@ -11,10 +11,12 @@ import Banner from "../assets/images/img-banner.png";
 import Factory from "../assets/images/img-factory.svg";
 import Truck from "../assets/images/img-truck.svg";
 
+
+// css
 const MainBox = styled.div`
   background-color: var(--bg2);
   width: 100%;
-  min-height: calc(100vh - 52px);
+  min-height: calc(100vh - 195px);
   margin: 0 auto;
   padding: 14px 14px 71px 14px;
   
@@ -72,6 +74,18 @@ const MainMenu = styled.div`
   flex-direction: row;
 `
 
+const MessageSample = styled.a`
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+  display: block;
+  font-size: var(--font12);
+  font-weight: 700;
+  color: var(--text0);
+`
+
+
+// data
 const MainCounts = [
     {count:'1', txt:'견적'},
     {count:'1', txt:'발주'},
@@ -81,8 +95,7 @@ const MainCounts = [
 ]
 
 const MessageList = [
-    {txt: '매장의 방역관리 알리기', description: '코로나 19로 인해 고객님들이 걱정하고 있습니다.'},
-    {txt: '매장의 방역관리 알리기', description: '코로나 19로 인해 고객님들이 걱정하고 있습니다.'},
+    {txt: '매장의 방역관리 알리기', description: '코로나 19로 인해 고객님들이 걱정하고 있습니다.들이 걱정하고 있습니다.'},
     {txt: '매장의 방역관리 알리기', description: '코로나 19로 인해 고객님들이 걱정하고 있습니다.'}
 ]
 
@@ -99,11 +112,34 @@ function Main() {
                     </MainMenuTitleBox>
                     <CountList items={MainCounts} />
                 </MainMenuBox>
+
                 <MainMenu>
-                    <ImageCard link="/customer" src={Factory} title="공장" content="공장 전체"></ImageCard>
-                    <ImageCard src={Truck} title="배송 대기" content="공장 전체"></ImageCard>
+                    <ImageCard
+                        link="/customer"
+                        src={Factory}
+                        title="공장"
+                        content="공장 전체"
+                        count="0"
+                        color="#78BBFF"
+                    />
+                    <ImageCard
+                        src={Truck}
+                        title="배송 대기"
+                        content="공장 전체"
+                        count="0"
+                        color="#FFCE6D"
+                    />
                 </MainMenu>
-                <ListMain title="첫 방문 환영 문자" content="메시지 추가" items={MessageList} />
+
+                <ListMain
+                    title="매장전용 메시지"
+                    content="메시지 추가"
+                    items={MessageList}
+                />
+                
+                <MainMenuBox>
+                    <MessageSample>메시지 샘플 보기</MessageSample>
+                </MainMenuBox>
             </MainBox>
             <MainFooter />
         </>

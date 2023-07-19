@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import {ReactComponent as Next} from "../../assets/images/btn-next.svg";
+
 const CardWrapper = styled.div`
   width: 48.5%;
   display: flex;
@@ -45,12 +47,20 @@ const CardTxt = styled.p`
   color: var(--text4);
 `
 
+const CardCountWrapper = styled.div`
+  width: 100%;
+  position: relative;
+  margin-top: 5px;
+`
+
 const CardCount = styled.h1`
   font-weight: 700;
   font-size: var(--font22);
+  line-height: var(--font22);
+  color: ${props => props.color || 'var(--text0)'};
 `
 
-function ImageCard({link, src, title, content}){
+function ImageCard({link, src, title, content, count, color}){
     return(
         <>
             <CardWrapper>
@@ -68,6 +78,12 @@ function ImageCard({link, src, title, content}){
                     <CardTxt>
                         {content}
                     </CardTxt>
+                    <CardCountWrapper>
+                        <CardCount color={color}>
+                            {count}
+                        </CardCount>
+                        <Next fill="#C1C1C1" style={{position: "absolute", top: "50%", transform: "translateY(-50%)", right: "0"}} />
+                    </CardCountWrapper>
                 </CardContent>
             </CardWrapper>
         </>

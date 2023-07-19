@@ -1,7 +1,7 @@
 import React from "react";
 import styled, {css} from "styled-components";
 
-import BtnNext from "../../assets/images/btn-next.png"
+import {ReactComponent as BtnNext} from "../../assets/images/btn-next.svg";
 
 const InputBox = styled.label`
   width: 100%;
@@ -72,7 +72,7 @@ function InputRadio({label, name, next, ...rest}) {
                 <InputWrapper type="checkbox" id={name} name={name}/>
                 <span></span>
                 <InputTxt {...rest}>{label}</InputTxt>
-                <NextBtn src={BtnNext} next={next} alt="다음" title="다음"/>
+                <NextBtn src={BtnNext} next={next} fill="#EDEDED" alt="다음" title="다음"/>
             </InputBox>
         </>
     )
