@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
-// import {Provider} from "react-redux";
+import {Provider} from "react-redux";
 import GlobalStyles from "./styles/GlobalStyles.styles";
 import styled from "styled-components";
-// import store from "./Store";
+import store from "./Store";
 
 const Container = styled.div`
   width: 100%;
@@ -17,14 +17,14 @@ const Container = styled.div`
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/*<Provider>*/}
+    <Provider store={store}>
         <BrowserRouter>
             <GlobalStyles />
             <Container>
                 <App />
             </Container>
         </BrowserRouter>
-    {/*</Provider>*/}
+    </Provider>
   </React.StrictMode>
 );
 

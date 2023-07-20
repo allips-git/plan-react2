@@ -31,7 +31,16 @@ const MainBanner = styled.img`
   margin-top: 52px;
 `
 
-const MainMenuBox = styled.div`
+const MainMenuBox = styled.a`
+  width: 100%;
+  background-color: var(--bg3);
+  padding: 0 14px;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.06);
+  display: block;
+`
+
+const PlanTalkBox = styled.div`
   width: 100%;
   background-color: var(--bg3);
   padding: 0 14px;
@@ -105,7 +114,7 @@ function Main() {
             <MainHeader />
             <MainBanner src={Banner} title="배너" alt="배너" />
             <MainBox>
-                <MainMenuBox>
+                <MainMenuBox href="/customer">
                     <MainMenuTitleBox>
                         <MainMenuTitle>전체고객</MainMenuTitle>
                         <MainMenuCount>1명</MainMenuCount>
@@ -131,14 +140,14 @@ function Main() {
                     />
                 </MainMenu>
 
-                <MainMenuBox>
+                <PlanTalkBox>
                     <PlanTalk
                         count="0"
                         point="50"
                         active
                     />
                 {/*  on/off는 active props로 관리  */}
-                </MainMenuBox>
+                </PlanTalkBox>
 
                 <ListMain
                     title="매장전용 메시지"
