@@ -10,6 +10,7 @@ import ListMain from "./components/ListMain";
 import Banner from "../assets/images/img-banner.png";
 import Factory from "../assets/images/img-factory.svg";
 import Truck from "../assets/images/img-truck.svg";
+import PlanTalk from "./components/PlanTalk";
 
 
 // css
@@ -84,7 +85,6 @@ const MessageSample = styled.a`
   color: var(--text0);
 `
 
-
 // data
 const MainCounts = [
     {count:'1', txt:'견적'},
@@ -130,6 +130,15 @@ function Main() {
                         color="#FFCE6D"
                     />
                 </MainMenu>
+
+                <MainMenuBox>
+                    <PlanTalk
+                        count="0"
+                        point="50"
+                        active
+                    />
+                {/*  on/off는 active props로 관리  */}
+                </MainMenuBox>
 
                 <ListMain
                     title="매장전용 메시지"

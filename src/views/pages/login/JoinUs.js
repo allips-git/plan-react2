@@ -5,8 +5,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 import Header from "../../common/Header";
-import InputValid from "../../components/InputValid";
-import Button from "../../components/Button";
+import InputValid from "../../components/Input/InputValid";
+import Button from "../../components/Button/Button";
 
 const Container = styled.div`
   width: 100%;

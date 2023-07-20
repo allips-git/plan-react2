@@ -7,10 +7,10 @@ import { fncAjax, fncAjaxFail, url } from "../../../dev/function.js";
 import Alert from "../../portals/Alert.js";
 
 import Header from "../../common/Header";
-import InputLabel from "../../components/InputLabel";
-import InputRadio from "../../components/InputRadio";
+import InputLabel from "../../components/Input/InputLabel";
+import InputRadio from "../../components/Input/InputRadio";
 import {NavLink} from "react-router-dom";
-import Button from "../../components/Button";
+import Button from "../../components/Button/Button";
 
 const LoginWrapper = styled.div`
   width: 100%;

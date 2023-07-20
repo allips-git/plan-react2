@@ -7,8 +7,8 @@ import { fncAjax, fncAjaxFail, url } from "../../../dev/function.js";
 
 import Header from "../../common/Header";
 import styled from "styled-components";
-import InputRadio from "../../components/InputRadio";
-import ButtonUnder from "../../components/ButtonUnder";
+import InputRadio from "../../components/Input/InputRadio";
+import ButtonUnder from "../../components/Button/ButtonUnder";
 // import {NavLink} from "react-router-dom";
 
 const Container = styled.div`

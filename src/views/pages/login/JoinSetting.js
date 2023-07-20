@@ -2,11 +2,11 @@ import React, {useState} from "react";
 import styled from "styled-components";
 
 import Header from "../../common/Header";
-import InputLabel from "../../components/InputLabel";
-import InputCheck from "../../components/InputCheck";
+import InputLabel from "../../components/Input/InputLabel";
+import InputCheck from "../../components/Input/InputCheck";
 import Select from "react-select";
 import {NavLink} from "react-router-dom";
-import ButtonUnder from "../../components/ButtonUnder";
+import ButtonUnder from "../../components/Button/ButtonUnder";
 import ImageThumbnail from "../../components/ImageThumbnail";
 
 const Container = styled.div`

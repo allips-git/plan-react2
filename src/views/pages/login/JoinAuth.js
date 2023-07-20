@@ -3,10 +3,10 @@ import styled from "styled-components";
 
 import Header from "../../common/Header";
 import ImageThumbnail from "../../components/ImageThumbnail";
-import InputLabel from "../../components/InputLabel";
-import InputRadio from "../../components/InputRadio";
-import ButtonUnder from "../../components/ButtonUnder";
-import InputButton from "../../components/InputButton";
+import InputLabel from "../../components/Input/InputLabel";
+import InputRadio from "../../components/Input/InputRadio";
+import ButtonUnder from "../../components/Button/ButtonUnder";
+import InputButton from "../../components/Input/InputButton";
 
 const Container = styled.div`
   width: 100%;
