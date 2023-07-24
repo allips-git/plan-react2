@@ -14,7 +14,7 @@ import FixedButton from "../../components/Button/FixedButton";
 import { setClientList } from "../../../Store.js"
 
 import Select from "react-select";
-// import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -56,7 +56,6 @@ function CustomerList(){
                 {/* 추후 style 수정 예정, react-select library 사용 */}
 
                 {customers.map(customer => (
-<<<<<<< HEAD
                     <NavLink to="/customer/v">
                         <IconCard
                             key={customer.id}
@@ -66,11 +65,6 @@ function CustomerList(){
                             date={customer.date}
                             pay={customer.pay} />
                     </NavLink>
-=======
-                    // <NavLink to="/customer/detail">
-                        <IconCard key={customer.id} type={customer.type} name={customer.name} address={customer.address} date={customer.date} pay={customer.pay} />
-                    // </NavLink>
->>>>>>> fbbfa72c96a881f0337fa5a4ee616a6f2d5925f1
                 ))}
             </Container>
             <FixedButton content="신규 명세표" />
