@@ -100,6 +100,10 @@ const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: auto;
   }
+  
+  button{
+    border: 0;
+  }
 
   /*  한글 폰트 */
   @font-face {

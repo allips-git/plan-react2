@@ -16,6 +16,9 @@ import CustomerList from "./views/pages/customer/CustomerList";
 import CustomerDetail from "./views/pages/customer/CustomerDetail";
 import CustomerUpload from "./views/pages/customer/CustomerUpload";
 
+// product
+import ProductChoice from "./views/pages/product/ProductChoice";
+
 function App() {
   return (
     <Routes>
@@ -30,6 +33,8 @@ function App() {
         <Route path="/login/joinus" element={<JoinUs />} />
         <Route path="/login/setting" element={<JoinSetting />} />
         <Route path="/login/auth" element={<JoinAuth />} />
+
+        <Route path="/product" element={<ProductChoice />} />
     </Routes>
   );
 }
