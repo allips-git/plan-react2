@@ -14,6 +14,7 @@ import JoinAuth from "./views/pages/login/JoinAuth";
 // customer
 import CustomerList from "./views/pages/customer/CustomerList";
 import CustomerDetail from "./views/pages/customer/CustomerDetail";
+import CustomerUpload from "./views/pages/customer/CustomerUpload";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/main" element={<Main />} />
         <Route path="/customer" element={<CustomerList />} />
         <Route path="/customer/v" element={<CustomerDetail />} />
+        <Route path="/customer/upload" element={<CustomerUpload />} />
 
         <Route path="/" element={<LoginInput />} />
         <Route path="/loginWait" element={<LoginWait />} />
