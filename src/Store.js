@@ -1,19 +1,13 @@
 // store.js
-import { createStore } from "redux";
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { clientList } from '../src/slice/clientListSlice';
 
-const initialState = {
-    isMainPage: false,
-};
+const rootReducer = combineReducers({
+  clientList: clientList.reducer,
+});
 
-function rootReducer(state = initialState, action) {
-    switch (action.type) {
-        case "SET_MAIN_PAGE":
-            return { ...state, isMainPage: action.payload };
-        default:
-            return state;
-    }
-}
-
-const store = createStore(rootReducer);
+const store = configureStore({
+  reducer: rootReducer,
+});
 
 export default store;

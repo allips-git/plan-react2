@@ -1,4 +1,9 @@
+import $ from 'jquery';
+
 import React, {useState} from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+
+import { fncAjax, fncAjaxFail, url } from "../../../dev/function.js";
 import styled from "styled-components";
 
 import Header from "../../common/Header";
@@ -54,7 +59,8 @@ const CheckItem = styled.li`
   }
 `
 
-function useInputChange(initialValue) {
+function useInputChange(initialValue) 
+{
     const [value, setValue] = useState(initialValue);
 
     const handleChange = (event) => {
@@ -65,13 +71,20 @@ function useInputChange(initialValue) {
 }
 
 function JoinSetting(){
-    const [storeValue, handleStoreChange] = useInputChange("");
-    const [addressValue, handleAddressChange] = useInputChange("");
-    const [detailValue, handleDetailChange] = useInputChange("");
-    const [numberValue, handleNumberChange] = useInputChange("");
-    const [pointValue, handlePointChange] = useInputChange("");
-    const [urlValue, handleUrlChange] = useInputChange("");
-    const [suggestValue, handleSuggestChange] = useInputChange("");
+    const [storeValue, handleStoreChange]       = useInputChange("");
+    const [addressValue, handleAddressChange]   = useInputChange("");
+    const [detailValue, handleDetailChange]     = useInputChange("");
+    const [numberValue, handleNumberChange]     = useInputChange("");
+    const [pointValue, handlePointChange]       = useInputChange("");
+    const [urlValue, handleUrlChange]           = useInputChange("");
+    const [suggestValue, handleSuggestChange]   = useInputChange("");
+
+    const inputs = [
+        { value: storeValue, name: '매장 이름' },
+        { value: addressValue, name: '주소' },
+        { value: detailValue, name: '매장 상세주소' },
+        { value: numberValue, name: '대표 전화번호' }
+    ];
 
     const service = [
         { value: 'test1', label: '테스트1' },
@@ -79,6 +92,46 @@ function JoinSetting(){
         { value: 'test3', label: '테스트3' },
         { value: 'test4', label: '테스트4' }
     ]
+
+    const joinSet = () => {
+        let stat = false;
+
+        for (const input of inputs) 
+        {
+            if(valChk(input.value, input.name))
+            {
+                stat = true;
+            }
+            else
+            {
+                stat = false;
+                return;
+            }
+        }
+
+        if(stat)
+        {
+            console.log('save');
+            // let con = confirm('save?');
+            // if(confirm('저장하시겠습니까?'))
+            {
+                
+                // fncAjax(`${url}/join/join/idOverCheck`, "POST", { id : email }).done(function (res) {
+                //     console.log(res);
+                // }).fail(fncAjaxFail);
+            };
+        }
+    }
+
+    const valChk = (value, name) => {
+        if(value === '')
+        {
+            alert(`${name}을(를) 입력하세요.`);
+            return false;
+        }
+
+        return true;
+    }
 
     return(
         <>
@@ -185,9 +238,9 @@ function JoinSetting(){
                 />
             </Container>
             
-            <NavLink to="/login/joinus">
-                <ButtonUnder content="저장" />
-            </NavLink>
+            {/* <NavLink to="/login/joinus"> */}
+                <ButtonUnder content="저장" onClick={joinSet}/>
+            {/* </NavLink> */}
         </>
     )
 }
