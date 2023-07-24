@@ -11,9 +11,9 @@ const ButtonWrapper = styled.button`
   color: var(--text5);
   border: none;
   min-width: 80px;
-  
+
   ${props =>
-    props.gray &&
+          props.gray &&
           css`
             background-color: var(--button1);
             color: var(--text1);
@@ -23,7 +23,7 @@ const ButtonWrapper = styled.button`
             font-size: var(--font10);
             font-weight: 700;
           `
-}
+  }
 
   ${props =>
           props.fullGray &&
@@ -44,6 +44,18 @@ const ButtonWrapper = styled.button`
             color: var(--text5);
             padding: 10px 36px;
             font-size: var(--font14);
+          `
+  }
+
+  ${props =>
+          props.white &&
+          css`
+            padding: 5px 16px;
+            background-color: var(--bg3);
+            border: 1px solid var(--line4);
+            border-radius: 4px;
+            color: var(--text3);
+            font-weight: 400;
           `
   }
 `

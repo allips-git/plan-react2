@@ -8,7 +8,7 @@ const ListWrapper = styled.div`
   width: 100%;
   padding: 22px 16px;
   border-radius: 4px;
-  box-shadow: 0 2px 2px rgba(0,0,0,.04);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, .04);
   background-color: var(--bg3);
 `
 
@@ -36,7 +36,7 @@ const ListItem = styled.li`
   list-style: decimal;
   display: flex;
   align-items: center;
-  
+
   & + & {
     margin-top: 24px;
   }
@@ -70,13 +70,13 @@ const ListItemDescription = styled.p`
   text-overflow: ellipsis;
 `
 
-function ListMain({ items, title, content }) {
+function ListMain({items, title, content}) {
     return (
         <>
             <ListWrapper>
                 <ListTitleWrapper>
                     <ListTitle>{title}</ListTitle>
-                    <Button content={content} />
+                    <Button content={content}/>
                 </ListTitleWrapper>
                 <ListItemWrapper>
                     {items.map((item, index) => (
@@ -88,10 +88,10 @@ function ListMain({ items, title, content }) {
                             </ListContentWrapper>
                             <NextButton
                                 style={{
-                                    position: "absolute",
-                                    top: "50%",
+                                    position : "absolute",
+                                    top      : "50%",
                                     transform: "translateY(-50%)",
-                                    right: "0",
+                                    right    : "0",
                                 }}
                                 fill="#EDEDED"
                                 src={NextButton}

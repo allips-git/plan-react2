@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 import Header from "../../common/Header";
-import IconCard from "../../components/IconCard";
-import FixedButton from "../../components/FixedButton";
+import IconCard from "../../components/Card/IconCard";
+import FixedButton from "../../components/Button/FixedButton";
 
 import Select from "react-select";
 import {NavLink} from "react-router-dom";
@@ -42,8 +42,14 @@ function CustomerList(){
                 {/* 추후 style 수정 예정, react-select library 사용 */}
 
                 {customers.map(customer => (
-                    <NavLink to="/customer/detail">
-                        <IconCard key={customer.id} type={customer.type} name={customer.name} address={customer.address} date={customer.date} pay={customer.pay} />
+                    <NavLink to="/customer/v">
+                        <IconCard
+                            key={customer.id}
+                            type={customer.type}
+                            name={customer.name}
+                            address={customer.address}
+                            date={customer.date}
+                            pay={customer.pay} />
                     </NavLink>
                 ))}
             </Container>

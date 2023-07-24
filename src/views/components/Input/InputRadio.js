@@ -1,7 +1,7 @@
 import React from "react";
 import styled, {css} from "styled-components";
 
-import {ReactComponent as BtnNext} from "../../../assets/images/btn-next.svg";
+import BtnNext from "../../../assets/images/btn-next.png";
 
 const InputBox = styled.label`
   width: 100%;

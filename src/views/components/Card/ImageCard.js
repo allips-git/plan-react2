@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import {ReactComponent as Next} from "../../assets/images/btn-next.svg";
+import {ReactComponent as Next} from "../../../assets/images/btn-next.svg";
 
 const CardWrapper = styled.div`
   width: 48.5%;

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import MainHeader from "./common/MainHeader";
 import MainFooter from "./common/MainFooter";
-import ImageCard from "./components/ImageCard";
+import ImageCard from "./components/Card/ImageCard";
 import CountList from "./components/CountList";
 import ListMain from "./components/ListMain";
 
