@@ -1,12 +1,20 @@
-import React from "react";
+import $ from 'jquery';
+
+import React, { useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
+
+import { fncAjax, fncAjaxFail, url } from "../../../dev/function.js";
 
 import Header from "../../common/Header";
 import IconCard from "../../components/IconCard";
 import FixedButton from "../../components/FixedButton";
 
+import { setClientList } from "../../../Store.js"
+
 import Select from "react-select";
-import {NavLink} from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -20,6 +28,12 @@ const Container = styled.div`
 `
 
 function CustomerList(){
+    const location   = useLocation();
+    const state      = location.state;
+    const clientList = useSelector((state) => state.clientList);
+
+    // console.log(clientList);
+
     const customers = [
         {id : 1, type: 'processOne', name: '김가은', address: '서울 수영구 수영로 472 서울 수영구 수영로 472', date: '22.04.22', pay: '1,240,000원'},
         {id : 2, type: 'processTwo', name: '김가은', address: '서울 수영구 수영로 472', date: '22.04.22', pay: '1,240,000원'},
@@ -42,9 +56,9 @@ function CustomerList(){
                 {/* 추후 style 수정 예정, react-select library 사용 */}
 
                 {customers.map(customer => (
-                    <NavLink to="/customer/detail">
+                    // <NavLink to="/customer/detail">
                         <IconCard key={customer.id} type={customer.type} name={customer.name} address={customer.address} date={customer.date} pay={customer.pay} />
-                    </NavLink>
+                    // </NavLink>
                 ))}
             </Container>
             <FixedButton content="신규 명세표" />

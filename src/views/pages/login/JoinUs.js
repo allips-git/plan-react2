@@ -2,6 +2,8 @@ import $ from 'jquery';
 
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+
+import { fncAjax, fncAjaxFail, url } from "../../../dev/function.js";
 import styled from "styled-components";
 
 import Header from "../../common/Header";
@@ -24,17 +26,15 @@ const Container = styled.div`
 `;
 
 function JoinUs() {
-    const joinNavigate = useNavigate();
+    const joinNavigate  = useNavigate();
     const { agreeInfo } = useLocation();
 
-    // console.log(state);
-
-    const [email, setEmail] = useState("");
-    const [pw, setPw] = useState("");
-    const [confirmPw, setConfirmPw] = useState("");
-    const [emailError, setEmailError] = useState("");
-    const [pwError, setPwError] = useState("");
-    const [confirmPwError, setConfirmPwError] = useState("");
+    const [email, setEmail]                     = useState("");
+    const [pw, setPw]                           = useState("");
+    const [confirmPw, setConfirmPw]             = useState("");
+    const [emailError, setEmailError]           = useState("");
+    const [pwError, setPwError]                 = useState("");
+    const [confirmPwError, setConfirmPwError]   = useState("");
 
     // 이메일 유효성 검사
     const validateEmail = (email) => {
@@ -56,9 +56,13 @@ function JoinUs() {
     const handleEmailChange = (event) => {
         const value = event.target.value;
         setEmail(value);
-        if (!validateEmail(value)) {
+
+        if(!validateEmail(value)) 
+        {
             setEmailError("이메일 형식이 올바르지 않습니다.");
-        } else {
+        } 
+        else 
+        {
             setEmailError("");
         }
     };
@@ -66,9 +70,13 @@ function JoinUs() {
     const handlePwChange = (event) => {
         const value = event.target.value;
         setPw(value);
-        if (!validatePassword(value)) {
+
+        if(!validatePassword(value)) 
+        {
             setPwError("비밀번호는 8자 이상의 숫자와 영문자 조합이어야 합니다.");
-        } else {
+        } 
+        else 
+        {
             setPwError("");
         }
     };
@@ -77,9 +85,13 @@ function JoinUs() {
         const value = event.target.value;
         setConfirmPw(value);
         const isMatch = validateConfirmPassword(pw, value);
-        if (!isMatch) {
+
+        if(!isMatch) 
+        {
             setConfirmPwError("비밀번호가 일치하지 않습니다.");
-        } else {
+        }
+        else
+        {
             setConfirmPwError("");
         }
     };
@@ -106,15 +118,26 @@ function JoinUs() {
             return;
         }
 
-        joinNavigate('/login/setting', {
-            state : {
-                agreeInfo : agreeInfo,
-                joinInfo  : {
-                    email : email,
-                    pw    : pw
-                }
+        /** 아이디 중복 검증 */
+        fncAjax(`${url}/join/join/idOverCheck`, "POST", { id : email }).done(function (data) {
+            // console.log(data);
+            if(data.result)
+            {
+                joinNavigate('/login/setting', {
+                    state : {
+                        agreeInfo : agreeInfo,
+                        joinInfo  : {
+                            email : email,
+                            pw    : pw
+                        }
+                    }
+                })
             }
-        })
+            else
+            {
+                alert(data.msg);
+            }
+        }).fail(fncAjaxFail);
     }
 
     return (
