@@ -18,6 +18,7 @@ import CustomerUpload from "./views/pages/customer/CustomerUpload";
 
 // product
 import ProductChoice from "./views/pages/product/ProductChoice";
+import ProductSpec from "./views/pages/product/ProductSpec";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="/login/auth" element={<JoinAuth />} />
 
         <Route path="/product" element={<ProductChoice />} />
+        <Route path="/product/spec" element={<ProductSpec />} />
     </Routes>
   );
 }
