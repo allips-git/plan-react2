@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Header from "../../common/Header";
+import DetailCard from "../../components/Card/DetailCard";
 
 const Container = styled.div`
   width: 100%;
@@ -14,7 +15,14 @@ function ProductSpec(){
     return(
         <>
             <Header title="명세서" />
-            <Container></Container>
+            <Container>
+                <DetailCard
+                    title="작은방"
+                    product="우드텍"
+                    figure="아르카디아 아이스화이트"
+                    pay="120,000원"
+                />
+            </Container>
         </>
     )
 }
