@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Header from "../../common/Header";
 import DetailCard from "../../components/Card/DetailCard";
+import BreakLine from "../../components/BreakLine";
 
 const Container = styled.div`
   width: 100%;
@@ -73,6 +74,8 @@ function ProductSpec(){
                 {productData.map((data, index) => (
                     <DetailCard key={index} {...data} />
                 ))}
+
+                <BreakLine />
             </Container>
         </>
     )
