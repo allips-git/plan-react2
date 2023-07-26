@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const ListWrapper = styled.div`
@@ -53,35 +54,46 @@ const ListPay = styled.p`
   }
 `
 
-function IconCard({ type, name, address, date, pay }) {
+function IconCard({ cd, type, name, address, date, pay }) {
     const [color, setColor] = useState('');
     const [content, setContent] = useState('');
 
+    let clientNavigate = useNavigate();
+
     useEffect(() => {
-        switch (type) {
-            case 'processOne':
+        switch (type) 
+        {
+            case '002':
                 setColor('#C2E4FF');
                 setContent('대기');
                 break;
-            case 'processTwo':
+            case '003':
                 setColor('#409AFF');
                 setContent('견적');
                 break;
-            case 'processThree':
+            case '005':
                 setColor('#0061FF');
                 setContent('발주');
                 break;
-            case 'processFour':
+            case '008':
                 setColor('#233CF9');
                 setContent('시공');
                 break;
-            case 'processFive':
+            case '017':
                 setColor('#292D77');
                 setContent('결제');
                 break;
+            case '031':
+                setColor('#EBEBEB');
+                setContent('완료');
+            break;
             case 'processSix':
                 setColor('#F51000');
                 setContent('A/S');
+                break;
+            case 'N':
+                setColor('#FF718B');
+                setContent('취소');
                 break;
             default:
                 setColor('');
@@ -92,7 +104,13 @@ function IconCard({ type, name, address, date, pay }) {
 
     return (
         <>
-            <ListWrapper>
+            <ListWrapper onClick={()=>{
+                clientNavigate('/customer/v', {
+                    state : {
+                        CLIENT_CD : cd
+                    }
+                })
+            }}>
                 <ListStatus color={color}>
                     {content}
                 </ListStatus>

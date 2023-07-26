@@ -13,6 +13,13 @@ else
 }
 
 /**
+ * @description 3자리 숫자 콤마 처리
+ */
+const commas = (x) => {
+    return Number(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+/**
  * @description 공용 ajax 함수
  */
 const fncAjax = (url, type, data, async, dataType='json') => {
@@ -34,4 +41,4 @@ const fncAjaxFail = (request, status, error) => {
     console.log(error);
 };
 
-export { fncAjax, fncAjaxFail, url };
+export { commas, fncAjax, fncAjaxFail, url };
