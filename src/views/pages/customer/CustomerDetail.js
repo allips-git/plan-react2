@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Header from "../../common/Header";
-import RoundTag from "../../components/RoundTag";
+import RoundTag from "../../components/Tag/RoundTag";
 import Button from "../../components/Button/Button";
 import LineText from "../../components/Text/LineText";
 import BreakLine from "../../components/BreakLine";
