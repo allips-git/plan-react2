@@ -2,9 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 
 let clientList = createSlice({
     name         : 'clientList',
-    initialState : [],
-    reducers     : {
-        setClientList(state , payload){
+    initialState : {
+        list : [],
+        cnt  : 0
+    },
+    reducers : {
+        setClientList(state, payload)
+        {
             return payload['payload']
         }
     }

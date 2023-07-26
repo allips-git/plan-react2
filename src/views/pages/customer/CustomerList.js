@@ -1,20 +1,20 @@
 import $ from 'jquery';
 
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useInView } from "react-intersection-observer"
 import styled from "styled-components";
 
-import { fncAjax, fncAjaxFail, url } from "../../../dev/function.js";
+import { commas, fncAjax, fncAjaxFail, url } from "../../../dev/function.js";
 
 import Header from "../../common/Header";
 import IconCard from "../../components/Card/IconCard";
 import FixedButton from "../../components/Button/FixedButton";
 
-import { setClientList } from "../../../Store.js"
+import { setClientList } from "../../../slice/clientListSlice.js"
 
 import Select from "react-select";
-import { NavLink } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -28,21 +28,54 @@ const Container = styled.div`
 `
 
 function CustomerList(){
-    const location   = useLocation();
-    const state      = location.state;
+    const dispatch = useDispatch();
+    const location = useLocation();
+    const state    = location.state;
+
+    const [ref, inView] = useInView();
+
+    let [pageNum, setPageNum] = useState(20);
+    let [flag , setFlag]      = useState(true);
+    
     const clientList = useSelector((state) => state.clientList);
 
-    // console.log(clientList);
+    const getClientList = useCallback(async () => {
+        let params = {
+            uc : 'AA001-UL-01',
+            sc : '',
+            op : '',
+            li : pageNum
+        };
 
-    const customers = [
-        {id : 1, type: 'processOne', name: '김가은', address: '서울 수영구 수영로 472 서울 수영구 수영로 472', date: '22.04.22', pay: '1,240,000원'},
-        {id : 2, type: 'processTwo', name: '김가은', address: '서울 수영구 수영로 472', date: '22.04.22', pay: '1,240,000원'},
-        {id : 3, type: 'processThree', name: '김가은', address: '서울 수영구 수영로 472', date: '22.04.22', pay: '1,240,000원'},
-        {id : 4, type: 'processFour', name: '김가은', address: '서울 수영구 수영로 472', date: '22.04.22', pay: '1,240,000원'},
-        {id : 5, type: 'processFive', name: '김가은', address: '서울 수영구 수영로 472', date: '22.04.22', pay: '1,240,000원'},
-        {id : 6, type: 'processSix', name: '김가은', address: '서울 수영구 수영로 472', date: '22.04.22', pay: '1,240,000원'}
-    //     type명 변경해서 사용해주세요. 임의로 넣어두었습니다! components/IconCard 내의 useEffect type명도 함께 변경 필요
-    ]
+        fncAjax(`${url}/client/clientList`, "POST", params).done(function (data) {
+            dispatch(setClientList(data));
+
+            if(data['list'].length !== pageNum)
+            {
+                setFlag(false)
+            }
+            else
+            {
+                setFlag(true)
+            }
+        }).fail(fncAjaxFail);
+    }, [pageNum]);
+
+    useEffect(() => {
+        if (inView && flag) 
+        {
+            setPageNum((state) => {
+                return state + 20;
+            })
+        }
+    }, [inView]);
+
+    useEffect(() => {
+        if(flag)
+        {
+            getClientList()
+        }
+    } , [getClientList]);
 
     const options = [
         { value: 'test1', label: '테스트1' }
@@ -54,18 +87,20 @@ function CustomerList(){
             <Container>
                 <Select options={options} classNamePrefix="" />
                 {/* 추후 style 수정 예정, react-select library 사용 */}
-
-                {customers.map(customer => (
-                    <NavLink to="/customer/v">
+                {clientList.list.length > 0 ? (
+                    clientList.list.map((item) => (
                         <IconCard
-                            key={customer.id}
-                            type={customer.type}
-                            name={customer.name}
-                            address={customer.address}
-                            date={customer.date}
-                            pay={customer.pay} />
-                    </NavLink>
-                ))}
+                            key={item.CLIENT_CD}
+                            cd={item.CLIENT_CD}
+                            type={item.ST_CD}
+                            name={item.CLIENT_NM}
+                            address={item.ADDR + item.ADDR_DETAIL}
+                            date={item.REG_DT}
+                            pay={commas(item.AMT)+'원'}/>
+                    ))
+                ) : (
+                    <></>
+                )}
             </Container>
             <FixedButton content="신규 명세표" />
         </>

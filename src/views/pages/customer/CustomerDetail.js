@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+
 import styled from "styled-components";
 import Header from "../../common/Header";
 import RoundTag from "../../components/RoundTag";
@@ -77,6 +79,11 @@ const ProcessData = [
 const DEFAULT_PAY = 1000000;
 
 function CustomerDetail({ type }) {
+    const location = useLocation();
+    const state    = location.state;
+
+    console.log(state);
+
     const [processTitle, setProcessTitle] = useState('');
 
     useEffect(() => {
