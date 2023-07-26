@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+
+import { fncAjax, fncAjaxFail, url } from "../../../dev/function.js";
 
 import styled from "styled-components";
 import Header from "../../common/Header";
@@ -82,7 +84,14 @@ function CustomerDetail({ type }) {
     const location = useLocation();
     const state    = location.state;
 
-    console.log(state);
+    let params = {
+        USER_CD   : 'AA001-UL-01',
+        CLIENT_CD : state.CLIENT_CD
+    };
+
+    fncAjax(`${url}/client/clientInfo`, "POST", params).done(function (data) {
+        console.log(data);
+    }).fail(fncAjaxFail);
 
     const [processTitle, setProcessTitle] = useState('');
 
