@@ -1,7 +1,7 @@
 import React from "react";
 import styled, {css} from "styled-components";
 
-const TagWrapper = styled.span`
+const TagWrapper = styled.a`
   display: inline-block;
   padding: 4px 8px;
   border-radius: 10px;
@@ -22,7 +22,7 @@ const TagWrapper = styled.span`
 function RoundTag({content, ...rest}) {
     return (
         <>
-            <TagWrapper {...rest}>{content}</TagWrapper>
+            <TagWrapper {...rest} href={"tel:"+content}>{content}</TagWrapper>
         </>
     )
 }

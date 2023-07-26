@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 
 import { fncAjax, fncAjaxFail, url } from "../../../dev/function.js";
 
@@ -11,6 +12,8 @@ import LineText from "../../components/Text/LineText";
 import BreakLine from "../../components/BreakLine";
 import CountList from "../../components/CountList";
 import ProcessCard from "../../components/Card/ProcessCard";
+
+import { setClientInfo } from "../../../slice/clientInfoSlice.js"
 
 const Container = styled.div`
   background-color: var(--bg3);
@@ -81,19 +84,32 @@ const ProcessData = [
 const DEFAULT_PAY = 1000000;
 
 function CustomerDetail({ type }) {
+    const dispatch = useDispatch();
     const location = useLocation();
     const state    = location.state;
 
-    let params = {
-        USER_CD   : 'AA001-UL-01',
-        CLIENT_CD : state.CLIENT_CD
+    const clientInfo = useSelector((state) => state.clientInfo);
+
+    const info  = clientInfo.info;
+    const list1 = clientInfo.list1;
+    const list2 = clientInfo.list2;
+
+    const getClientInfo = () => {
+        let params = {
+            USER_CD   : 'AA001-UL-01',
+            CLIENT_CD : state.CLIENT_CD
+        };
+
+        fncAjax(`${url}/client/clientInfo`, "POST", params).done(function (data) {
+            dispatch(setClientInfo(data));
+        }).fail(fncAjaxFail);
     };
 
-    fncAjax(`${url}/client/clientInfo`, "POST", params).done(function (data) {
-        console.log(data);
-    }).fail(fncAjaxFail);
-
     const [processTitle, setProcessTitle] = useState('');
+
+    useEffect(() => {
+        getClientInfo();
+    }, []);
 
     useEffect(() => {
         switch (type) {
@@ -113,7 +129,7 @@ function CustomerDetail({ type }) {
             <Header title="고객 상세" />
             <Container>
                 <CusTitleWrapper>
-                    <CusTitle>한샘 인테리어</CusTitle>
+                    <CusTitle>{clientInfo['info']['CLIENT_NM']}</CusTitle>
                     <Button
                         type="button"
                         content="정보수정"
@@ -130,16 +146,16 @@ function CustomerDetail({ type }) {
                 <CusListWrapper>
                     <CusListItem>
                         <CusListTitle>전화번호</CusListTitle>
-                        <RoundTag content="테스트" />
+                        <RoundTag content={info['TEL']} />
                     </CusListItem>
 
                     <CusListItem>
                         <CusListTitle>주소</CusListTitle>
-                        <RoundTag content="부산광역시 수영구 수영로 411-1" />
+                        <RoundTag content={info['ADDR']} />
                     </CusListItem>
 
-                    <LineText title="등록일" content="22.02.09" />
-                    <LineText title="상세주소" content="디자인윈도우 1층" />
+                    <LineText title="등록일" content={info['REG_DT']} />
+                    <LineText title="상세주소" content={info['ADDR_DETAIL']} />
                     <LineText title="담당자" content="홍길동" />
                     <LineText title="그룹명" content="일반고객" />
                 </CusListWrapper>
