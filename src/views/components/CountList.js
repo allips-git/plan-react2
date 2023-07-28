@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {styled, css} from "styled-components";
 
 const ListWrapper = styled.ul`
@@ -35,13 +35,19 @@ const ListTxt = styled.p`
   font-size: var(--font12);
 `
 
-function CountList({items, main}) {
-    const widthPercentage = 100 / items.length;
+function CountList({main}) {
+    const [CustomerCount, setCustomerCount] = useState([
+        { txt: "판매중",    count: "0" },
+        { txt: "판매완료",  count: "0" },
+        { txt: "취소",      count: "0" }
+    ]);
+
+    const widthPercentage = 100 / CustomerCount.length;
 
     return (
         <>
             <ListWrapper main={main}>
-                {items.map((item, index) => (
+                {CustomerCount.map((item, index) => (
                     <ListItem key={index} width={widthPercentage}>
                         <ListCount>{item.count}</ListCount>
                         <ListTxt>{item.txt}</ListTxt>

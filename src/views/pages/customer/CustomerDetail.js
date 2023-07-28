@@ -67,13 +67,6 @@ const ProcessBox = styled.div`
   }
 `;
 
-// data
-const CustomerCount = [
-    { txt: "판매중", count: "1" },
-    { txt: "판매완료", count: "0" },
-    { txt: "취소", count: "1" },
-];
-
 const ProcessData = [
     { txt: "계약 완료" },
     { txt: "발주 완료" },
@@ -101,6 +94,7 @@ function CustomerDetail({ type }) {
         };
 
         fncAjax(`${url}/client/clientInfo`, "POST", params).done(function (data) {
+            console.log(data);
             dispatch(setClientInfo(data));
         }).fail(fncAjaxFail);
     };
@@ -146,12 +140,12 @@ function CustomerDetail({ type }) {
                 <CusListWrapper>
                     <CusListItem>
                         <CusListTitle>전화번호</CusListTitle>
-                        <RoundTag content={info['TEL']} />
+                        <RoundTag content={info['TEL']} telyn="Y"/>
                     </CusListItem>
 
                     <CusListItem>
                         <CusListTitle>주소</CusListTitle>
-                        <RoundTag content={info['ADDR']} />
+                        <RoundTag content={info['ADDR']} telyn="N"/>
                     </CusListItem>
 
                     <LineText title="등록일" content={info['REG_DT']} />
@@ -164,7 +158,7 @@ function CustomerDetail({ type }) {
 
                 <ProcessBox>
                     <CustomerBox>
-                        <CountList items={CustomerCount} />
+                        <CountList/>
                     </CustomerBox>
 
                     <ProcessCard title={processTitle} pay={DEFAULT_PAY} items={ProcessData} />

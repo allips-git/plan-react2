@@ -4,6 +4,7 @@ let clientInfo = createSlice({
     name         : 'clientInfo',
     initialState : {
         info   : {},
+        tab    : {},
         list1  : [],
         list2  : []
     },

@@ -102,15 +102,16 @@ function LoginInput() {
             chk : $('input:checkbox[id="autologin"]').is(":checked") == true ? 'Y' : 'N' 
         };
 
-        fncAjax(`${url}/login`, "POST", param, false).done(function (res) {
-            if(res.result['result'])
+        fncAjax(`${url}/getLogin`, "POST", param, false).done(function (res) {
+            // console.log(res.result);
+            if(res.result)
             {
                 localStorage.removeItem('storage');
-                localStorage.setItem('storage', JSON.stringify(res.result['data']));
+                // localStorage.setItem('storage', JSON.stringify(res.result['data']));
             }
             else
             {
-                alert(res.result['msg']);
+                alert(res.msg);
             }
         }).fail(fncAjaxFail);
     }
