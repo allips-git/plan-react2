@@ -22,7 +22,7 @@ const TagWrapper = styled.a`
 function RoundTag({content, ...rest}) {
     return (
         <>
-            <TagWrapper {...rest} href={"tel:"+content}>{content}</TagWrapper>
+            <TagWrapper {...rest} href={rest.telyn == 'Y' ? "tel:"+content : undefined}>{content}</TagWrapper>
         </>
     )
 }

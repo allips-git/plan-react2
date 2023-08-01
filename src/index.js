@@ -15,16 +15,14 @@ const Container = styled.div`
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-        <BrowserRouter>
-            <GlobalStyles />
-            <Container>
-                <App />
-            </Container>
-        </BrowserRouter>
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+      <BrowserRouter>
+          <GlobalStyles />
+          <Container>
+              <App />
+          </Container>
+      </BrowserRouter>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
