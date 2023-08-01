@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Header from "../../common/Header";
 import DetailCard from "../../components/Card/DetailCard";
 import BreakLine from "../../components/BreakLine";
+import MoreCountCard from "../../components/Card/MoreCountCard";
 
 const Container = styled.div`
   width: 100%;
@@ -43,7 +44,8 @@ const productData = [
                 actual: false,
                 figure: "아르카디아 아이스화이트",
                 pay: "150,000원",
-                blind: false,
+                blind: false
+                ,
                 specs: [
                     { width: "240", height: "120", left: "1", right: "0", size: "2회베" },
                     { width: "240", height: "120", left: "1", right: "0", size: "2회베" }
@@ -74,8 +76,9 @@ function ProductSpec(){
                 {productData.map((data, index) => (
                     <DetailCard key={index} {...data} />
                 ))}
-
                 <BreakLine />
+
+                <MoreCountCard />
             </Container>
         </>
     )
