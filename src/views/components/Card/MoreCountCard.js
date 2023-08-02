@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
+import InlineLabel from "../Input/InlineLabel";
+
+import MoreBtn from "../../../assets/images/btn-next.png";
+
 const CardWrapper = styled.div`
   width: 100%;
   overflow: hidden;
@@ -9,10 +13,14 @@ const CardWrapper = styled.div`
   padding: 16px;
 `
 
+const CardHeadWrapper = styled.div`
+  width: 100%;
+`
+
 const CardTitleWrapper = styled.div`
   width: 100%;
-  
-  &::after{
+
+  &::after {
     content: '';
     display: block;
     clear: both;
@@ -26,44 +34,46 @@ const CardTitle = styled.h3`
   color: var(--text1);
 `
 
+const CardShowMore = styled.p`
+  float: right;
+  font-size: var(--font13);
+  font-weight: 400;
+`
+
+const CardShowMoreBtn = styled.img`
+  margin-left: 10px;
+`
+
 const CardMoreWrapper = styled.div`
   width: 100%;
   margin: 30px 0;
 `
 
-const CardMoreInputWrapper = styled.div`
-  display: flex;
-  width: 100%;
-`
-
-const CardMoreInputTitle = styled.label`
-  width: 50%;
-  color: var(--text3);
-  font-size: var(--font13);
-  font-weight: 500;
-  text-align: left;
-`
-
-const CardMoreInputBox = styled.div`
-  float: right;
-  width: 40%;
-  border-radius: 2px;
-  border: 1px solid var(--line4);
-`
-
-function MoreCountCard(){
-    return(
+function MoreCountCard() {
+    return (
         <>
             <CardWrapper>
-                <CardTitleWrapper>
-                    <CardTitle>제품 결제 내역</CardTitle>
+                <CardHeadWrapper>
+                    <CardTitleWrapper>
+                        <CardTitle>제품 결제 내역</CardTitle>
+                        <CardShowMore>
+                            더보기
+                            <CardShowMoreBtn src={MoreBtn} alt="more" title="more" />
+                        </CardShowMore>
+                    </CardTitleWrapper>
 
                     <CardMoreWrapper>
-                        <CardMoreInputWrapper>
-                            <CardMoreInputTitle>할인 금액</CardMoreInputTitle>
-                        </CardMoreInputWrapper>
+                        <InlineLabel
+                            label="할인 금액"
+                            name=""
+                        />
+                        <InlineLabel
+                            label="추가 금액"
+                            name=""
+                            red
+                        />
                     </CardMoreWrapper>
-                </CardTitleWrapper>
+                </CardHeadWrapper>
             </CardWrapper>
         </>
     )
