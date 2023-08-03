@@ -9,7 +9,7 @@ import Header from "../../common/Header";
 import RoundTag from "../../components/Tag/RoundTag";
 import Button from "../../components/Button/Button";
 import LineText from "../../components/Text/LineText";
-import BreakLine from "../../components/BreakLine";
+import BreakLine from "../../components/Line/BreakLine";
 import CountList from "../../components/CountList";
 import ProcessCard from "../../components/Card/ProcessCard";
 

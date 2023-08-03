@@ -75,6 +75,7 @@ const GlobalStyles = createGlobalStyle`
     --font12: .75rem;
     --font13: .812rem;
     --font14: .875rem;
+    --font15: .942rem;
     --font16: 1rem;
     --font18: 1.125rem;
     --font20: 1.25rem;

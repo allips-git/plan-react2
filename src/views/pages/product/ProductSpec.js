@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import Header from "../../common/Header";
 import DetailCard from "../../components/Card/DetailCard";
-import BreakLine from "../../components/BreakLine";
+import BreakLine from "../../components/Line/BreakLine";
 import MoreCountCard from "../../components/Card/MoreCountCard";
 
 const Container = styled.div`
