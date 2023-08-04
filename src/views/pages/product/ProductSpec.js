@@ -5,6 +5,7 @@ import Header from "../../common/Header";
 import DetailCard from "../../components/Card/DetailCard";
 import BreakLine from "../../components/Line/BreakLine";
 import MoreCountCard from "../../components/Card/MoreCountCard";
+import Discount from "../../portals/Discount";
 
 const Container = styled.div`
   width: 100%;
@@ -80,6 +81,8 @@ function ProductSpec(){
 
                 <MoreCountCard />
             </Container>
+
+            <Discount />
         </>
     )
 }

@@ -102,7 +102,8 @@ const GlobalStyles = createGlobalStyle`
     -moz-osx-font-smoothing: auto;
   }
   
-  button{
+  button, input, textarea
+  {
     border: 0;
   }
 

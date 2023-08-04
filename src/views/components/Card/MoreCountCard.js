@@ -6,7 +6,6 @@ import InlineLabel from "../Input/InlineLabel";
 import MoreBtn from "../../../assets/images/btn-next.png";
 import SlideToggle from "../Toggle/SlideToggle";
 import DottedLine from "../Line/DottedLine";
-import ButtonUnder from "../Button/ButtonUnder";
 import ButtonMulUnder from "../Button/ButtonMulUnder";
 
 const CardWrapper = styled.div`
