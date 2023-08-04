@@ -20,6 +20,7 @@ const PopupBox = styled.div`
   background-color: var(--bg3);
   box-shadow: 6px 16px 40px 0 rgba(0, 0, 0, 0.4);
   width: 90%;
+  max-width: 450px;
 `
 
 const PopupTitle = styled.h2`
