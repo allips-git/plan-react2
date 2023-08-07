@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const ButtonWrapper = styled.div`
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   padding: 8px 16px 14px 16px;

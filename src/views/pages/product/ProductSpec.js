@@ -6,6 +6,11 @@ import DetailCard from "../../components/Card/DetailCard";
 import BreakLine from "../../components/Line/BreakLine";
 import MoreCountCard from "../../components/Card/MoreCountCard";
 import Discount from "../../portals/Discount";
+import Modal from "../../portals/Modal";
+import PopupInput from "../../components/Popup/PopupInput";
+import PopupMulti from "../../components/Popup/PopupMulti";
+import PopupSelect from "../../components/Popup/PopupSelect";
+import ButtonUnder from "../../components/Button/ButtonUnder";
 
 const Container = styled.div`
   width: 100%;
@@ -74,15 +79,28 @@ function ProductSpec(){
         <>
             <Header title="명세서" />
             <Container>
-                {productData.map((data, index) => (
+                {productData.map((data, index) =>
+                    (
                     <DetailCard key={index} {...data} />
                 ))}
                 <BreakLine />
 
                 <MoreCountCard />
+
             </Container>
 
             <Discount />
+
+            <Modal title="계약정보">
+                <PopupInput title="계약일" name="" placeholder="" disabled />
+                <PopupInput title="시공일" name="" placeholder="" />
+                <PopupSelect title="설치 시간" />
+                <PopupSelect title="시공 담당" />
+                <PopupMulti title="선금" name="" placeholder="" />
+                <PopupInput title="메모" name="" placeholder="비고" />
+
+                <ButtonUnder content="계약서 이동" onClick="" />
+             </Modal>
         </>
     )
 }
