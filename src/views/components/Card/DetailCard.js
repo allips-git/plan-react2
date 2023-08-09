@@ -27,6 +27,7 @@ function DetailCard({ title, data }) {
                 </DetailTitle>
 
                 <DetailCardContent data={data} />
+
             </DetailWrapper>
         </>
     )

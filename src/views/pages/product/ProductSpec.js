@@ -39,6 +39,8 @@ const productData = [
                     { width: "240", height: "120", left: "1", right: "양개", size: "2회베" }
                 ],
                 tags: "",
+                buttonContent: "메시지 발주",
+                buttonOutsource: true
             },
         ],
     },
@@ -69,6 +71,8 @@ const productData = [
                     { width: "240", height: "120", left: "1", right: "0", size: "2회베" }
                 ],
                 tags: ["형상옵션", "솜피 알투스 402모터", "레일추가", "투톤: 기둥 아이보리 3폭 / 안쪽 화이트 2폭"],
+                buttonContent: "(올립스) 시스템 발주",
+                buttonOutsource: false
             }
         ],
     },
@@ -89,9 +93,9 @@ function ProductSpec(){
 
             </Container>
 
-            <Discount />
+            {/*<Discount />*/}
 
-            <Modal title="계약정보">
+            {/*<Modal title="계약정보">
                 <PopupInput title="계약일" name="" placeholder="" disabled />
                 <PopupInput title="시공일" name="" placeholder="" />
                 <PopupSelect title="설치 시간" />
@@ -100,7 +104,7 @@ function ProductSpec(){
                 <PopupInput title="메모" name="" placeholder="비고" />
 
                 <ButtonUnder content="계약서 이동" onClick="" />
-             </Modal>
+             </Modal>*/}
         </>
     )
 }

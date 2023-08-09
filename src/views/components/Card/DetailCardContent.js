@@ -79,6 +79,17 @@ const TagWrapper = styled.div`
   margin-bottom: 8px;
 `
 
+const DetailBtn = styled.button`
+  width: 100%;
+  padding: 14px 36px;
+  color: var(--text5);
+  border-radius: 2px;
+  background-color: ${props => props.outsource ? "var(--side1)" : "var(--blue4)"};
+  font-weight: 700;
+  font-size: var(--font13);
+  margin-top: 20px;
+`
+
 const getTableHeaderContent = (blind) => {
     if (blind) {
         return (
@@ -103,7 +114,7 @@ const getTableHeaderContent = (blind) => {
     }
 };
 
-function DetailCardContent({ data }){
+function DetailCardContent({ data, button }){
     return(
         <>
             <DetailContentWrapper>
@@ -135,6 +146,7 @@ function DetailCardContent({ data }){
                                         <td>{spec.height}</td>
                                         <td>{spec.left}</td>
                                         <td>{spec.right}</td>
+
                                         <td>{spec.size}</td>
                                     </tr>
                                 ))}
@@ -152,6 +164,12 @@ function DetailCardContent({ data }){
                         <TagWrapper>
                             <ColorTag orange content="지시사항: 동해물과 백두산이" />
                         </TagWrapper>
+
+                        {item.buttonContent && (
+                            <DetailBtn outsource={item.buttonOutsource}>
+                                {item.buttonContent}
+                            </DetailBtn>
+                        )}
                     </DetailContent>
                 ))}
             </DetailContentWrapper>
